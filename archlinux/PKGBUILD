@@ -1,0 +1,38 @@
+# $Id: PKGBUILD 18050 2010-05-30 10:44:15Z spupykin $
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Dag Odenhall <dag.odenhall@gmail.com>
+# Contributor: Grigorios Bouzakis <grbzks@gmail.com>
+
+pkgname=dwm
+pkgver=5.8.1
+pkgrel=1
+pkgdesc="A dynamic window manager for X"
+url="http://dwm.suckless.org"
+arch=('i686' 'x86_64')
+license=('MIT')
+options=(zipman)
+depends=('libx11' 'libxinerama')
+install=dwm.install
+source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz \
+	config.h
+	dwm.desktop
+   dwm-5.8.1-pertag+push+bstack.diff)
+md5sums=('a6f786addf9fb3240cc2246a346330ca'
+         'a7eeca7948f40e6c5062ff2c98972b84'
+         '939f403a71b6e85261d09fc3412269ee'
+         'ba69a58ff1e0f008aa1f9838b1561451')
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+
+  patch -p1 < ../dwm-5.8.1-pertag+push+bstack.diff
+
+  cp $srcdir/config.h config.h
+
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 || return 1
+  make PREFIX=/usr DESTDIR=$pkgdir install || return 1
+
+  install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE && \
+  install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README && \
+  install -m644 -D $srcdir/dwm.desktop $pkgdir//etc/X11/sessions/dwm.desktop
+}
