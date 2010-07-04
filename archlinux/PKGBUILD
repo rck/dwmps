@@ -16,16 +16,16 @@ install=dwm.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz \
 	config.h
 	dwm.desktop
-   dwm-5.8.2-pertag+push+bstack.diff)
+   dwm-5.8.2-pertag+push+bstack+fibonacci.diff)
 md5sums=('f0b422bfeaa812d66c6dd15c3cc92a6b'
-         'a7eeca7948f40e6c5062ff2c98972b84'
+         '88ffe67ad3e4ebe82dcd530068641d5b'
          '939f403a71b6e85261d09fc3412269ee'
-         '8a8c344eb831d5712bda1c25d1ed0590')
+         'd368d5c9fadf7946bedb19450f27437b')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  patch -p1 < ../dwm-5.8.2-pertag+push+bstack.diff
+  patch -p1 < ../dwm-5.8.2-pertag+push+bstack+fibonacci.diff
 
   cp $srcdir/config.h config.h
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
