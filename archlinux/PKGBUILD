@@ -18,7 +18,7 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz \
 	dwm.desktop
    dwm-5.8.2-pertag+push+bstack+fibonacci+grid.diff)
 md5sums=('f0b422bfeaa812d66c6dd15c3cc92a6b'
-         '0837173e5392db4cae0fd07528400c17'
+         '4d54dd5e1561d50930c6c5128d2ad6e5'
          '939f403a71b6e85261d09fc3412269ee'
          '3f124d6e2b0935dfaec1ddd1f20b1b81')
 
