@@ -20,7 +20,7 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 
 md5sums=('2799f885c05817ca112d521bb247f797'
          '2fe0513807fa34f95935d579bf714077'
-         '0837173e5392db4cae0fd07528400c17'
+         '4d54dd5e1561d50930c6c5128d2ad6e5'
          '939f403a71b6e85261d09fc3412269ee')
 
 build() {
