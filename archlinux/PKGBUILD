@@ -1,11 +1,11 @@
-# $Id$
+# $Id: PKGBUILD 60970 2011-12-19 21:33:58Z spupykin $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Dag Odenhall <dag.odenhall@gmail.com>
 # Contributor: Grigorios Bouzakis <grbzks@gmail.com>
 
 pkgname=dwm
-pkgver=5.9
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -14,20 +14,17 @@ options=(zipman)
 depends=('libx11' 'libxinerama')
 install=dwm.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
-   dwm-5.9-pertag+push+bstack+fibonacci+grid.diff
+   dwm-6.0-pertag+movestack+bstack+fibbonacci+grid.diff
 	config.h
 	dwm.desktop)
-
-md5sums=('2799f885c05817ca112d521bb247f797'
-         '2fe0513807fa34f95935d579bf714077'
-         '4d54dd5e1561d50930c6c5128d2ad6e5'
+md5sums=('8bb00d4142259beb11e13473b81c0857'
+         'a90d3aa948f7e13d8ed65b3b450775f0'
+         'c027736cb0c2dbf19b0ccc77531ab716'
          '939f403a71b6e85261d09fc3412269ee')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-
-  patch -p1 < ../dwm-$pkgver-pertag+push+bstack+fibonacci+grid.diff
-
+  patch -p1 < $srcdir/dwm-6.0-pertag+movestack+bstack+fibbonacci+grid.diff
   cp $srcdir/config.h config.h
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
